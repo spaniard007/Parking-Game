@@ -20,4 +20,5 @@ Game Assets:
 Rider
 
 ## Necessary Documents
+Coggle Link : https://coggle.it/diagram/YtgNqGqIBdEc2cFl/t/-/d35d45d517b330bdcb6da35784b2d4a2b351793beb421f5882a070af59b9edf9
 
