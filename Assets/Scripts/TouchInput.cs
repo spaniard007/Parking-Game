@@ -29,11 +29,10 @@ public class TouchInput : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,ID
     {
         Ray ray = CameraController.instance.mainCamera.ScreenPointToRay(eventData.position);
         RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit, raycastDistance, 256))
+        if (Physics.Raycast(ray, out hit, raycastDistance))
         {
             VehicleMovementController vehicle = hit.transform.GetComponent<VehicleMovementController>();
-            if (vehicle != null)
+            if (vehicle != null && vehicle.vehicleState == VehicleState.In_Parking)
             {
                 isMousePressed = true;
                 dragData = new DragData{touchPos=eventData.position,vehicle = vehicle};
@@ -56,6 +55,8 @@ public class TouchInput : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,ID
         if (dragVal.magnitude > dragThreshold)
         {
             //attempt vehichle Movement
+            //if(dra)
+            dragData.vehicle.AttemptToMove(dragVal);
         }
     }
     
