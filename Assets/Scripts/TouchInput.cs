@@ -10,7 +10,8 @@ public class TouchInput : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,ID
     private DragData dragData;
 
     public int raycastDistance;
-    public int dragThreshold;
+    public int dragMinThreshold;
+    public int dragMaxThreshold;
     
     
     // Start is called before the first frame update
@@ -52,7 +53,7 @@ public class TouchInput : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,ID
 
         Vector2 dragVal = dragData.touchPos - eventData.position;
 
-        if (dragVal.magnitude > dragThreshold)
+        if (dragVal.magnitude > dragMinThreshold && dragVal.magnitude<dragMaxThreshold)
         {
             //attempt vehichle Movement
             //if(dra)

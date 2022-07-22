@@ -653,7 +653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 2bce4e452d1732441a288976cac6660c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -92.32
+      value: -92.469
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: 2bce4e452d1732441a288976cac6660c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -844,7 +844,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: c242e8f877bfdcd41baf7688f8257e61, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -90.44
+      value: -90.62
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: c242e8f877bfdcd41baf7688f8257e61, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1796,6 +1796,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 852640288, guid: 3c6b87f2bce2f51409a9827cf9986b70, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c6b87f2bce2f51409a9827cf9986b70, type: 3}
 --- !u!1001 &855382915
@@ -1939,7 +1943,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: a9cc99afcecaa3145a4bd93adf85a113, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -55.665035
+      value: -56.992035
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: a9cc99afcecaa3145a4bd93adf85a113, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2370,7 +2374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 46dedad0745e3a7489d1f23e843b2cd3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -55.67
+      value: -57.008
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 46dedad0745e3a7489d1f23e843b2cd3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2950,7 +2954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: a9cc99afcecaa3145a4bd93adf85a113, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -54.193
+      value: -54.984
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: a9cc99afcecaa3145a4bd93adf85a113, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3078,7 +3082,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: c242e8f877bfdcd41baf7688f8257e61, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -55.61
+      value: -56.937
       objectReference: {fileID: 0}
     - target: {fileID: 400010, guid: c242e8f877bfdcd41baf7688f8257e61, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3397,6 +3401,10 @@ PrefabInstance:
     - target: {fileID: 400010, guid: 33ebbf53759c84c4795793bc6f9d4218, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 470016580, guid: 33ebbf53759c84c4795793bc6f9d4218, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33ebbf53759c84c4795793bc6f9d4218, type: 3}
@@ -4794,7 +4802,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   raycastDistance: 200
-  dragThreshold: 25
+  dragMinThreshold: 30
+  dragMaxThreshold: 70
 --- !u!1001 &2064385735
 PrefabInstance:
   m_ObjectHideFlags: 0

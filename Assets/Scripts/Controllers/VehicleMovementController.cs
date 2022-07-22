@@ -18,6 +18,7 @@ public class VehicleMovementController : MonoBehaviour
     public int speed;
     private Vector3 movementDirection;
     public VehicleState vehicleState;
+    private bool isInCollider;
 
     public bool isMovingBack;
     
@@ -33,8 +34,12 @@ public class VehicleMovementController : MonoBehaviour
         
     }
 
+    #region MovementAttempt
+    
     public void AttemptToMove(Vector2 dragVal)
     {
+        if(isInCollider)
+            return;
         if (transform.eulerAngles.y == 90f) // left faced
         {
             Debug.Log(transform.rotation.eulerAngles.y);
@@ -74,33 +79,56 @@ public class VehicleMovementController : MonoBehaviour
         isMovingBack = movementDirection != transform.forward;
     }
 
+    #endregion
+
+    #region VehicleMovementMechanism
+    
     private void FixedUpdate()
     {
+        if(isInCollider)
+            return;
         transform.position = transform.position + movementDirection * speed * Time.deltaTime;
-    }
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.tag == "obstacles")
-        {
-            //obstacle effect later
-            movementDirection *= -1;
-            Invoke("StopVehicle",0.1f);
-
-        }
-        else if (other.gameObject.tag == "vehicles")
-        {
-            movementDirection *= -1;
-            Invoke("StopVehicle",0.1f);
-        }
     }
 
     private void StopVehicle()
     {
         vehicleState = VehicleState.In_Parking;
         movementDirection = Vector3.zero;
+        isInCollider = false;
     }
+    #endregion
 
+    #region CollisionEnterExit
+    
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "obstacles")
+        {
+            isInCollider = true;
+            //obstacle effect later
+            movementDirection *= -1;
+            transform.DOLocalMove(transform.position+movementDirection/2f, 0.05f).OnComplete(() =>
+            {
+                StopVehicle();
+            });
+        }
+        else if (other.gameObject.tag == "vehicles")
+        {
+            isInCollider = true;
+            movementDirection *= -1;
+            transform.DOLocalMove(transform.position+movementDirection/2f, 0.05f).OnComplete(() =>
+            {
+                StopVehicle();
+            });
+        }
+    }
+    
+    
+    #endregion
+    
+
+    #region ColllisionTrigger
+    
     private void OnTriggerEnter(Collider other)
     {
         if (vehicleState == VehicleState.Moving_In_Parking)
@@ -125,4 +153,6 @@ public class VehicleMovementController : MonoBehaviour
             }
         }
     }
+    
+    #endregion
 }

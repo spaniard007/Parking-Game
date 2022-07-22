@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public static CameraController instance;
-
     public Camera mainCamera;
+
+    #region Singletone
+    
+    public static CameraController instance;
     private void Awake() 
     {
         if (instance != null && instance != this) 
@@ -18,6 +20,9 @@ public class CameraController : MonoBehaviour
             instance = this; 
         } 
     }
+    
+    #endregion
+    
     // Start is called before the first frame update
     void Start()
     {
