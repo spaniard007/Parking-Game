@@ -26,6 +26,7 @@ public class VehicleMovementController : MonoBehaviour
     void Start()
     {
         movementDirection = Vector3.zero;
+        vehicleState = VehicleState.In_Parking;
     }
 
     // Update is called once per frame
@@ -42,7 +43,6 @@ public class VehicleMovementController : MonoBehaviour
             return;
         if (transform.eulerAngles.y == 90f) // left faced
         {
-            Debug.Log(transform.rotation.eulerAngles.y);
             movementDirection = transform.forward;
             if (dragVal.x < 0)
             {
@@ -150,6 +150,7 @@ public class VehicleMovementController : MonoBehaviour
             if (other.tag == "endPoint")
             {
                 Destroy(gameObject);
+                GameManager.instance.DeleteVehicle(this);
             }
         }
     }
