@@ -8,12 +8,12 @@ using TMPro;
 public class UIController : MonoBehaviour
 {
     [SerializeField] private Image gameMenuBG;
-    [SerializeField] private Image dragBG;
+    [SerializeField] private Image gameHudBG;
     [SerializeField] private Image levelCompleteBG;
 
     [SerializeField] private Image policeManIMG;
     [SerializeField] private Image policeCarIMG;
-    
+
 
     [SerializeField] private TMP_Text playText;
 
@@ -62,31 +62,37 @@ public class UIController : MonoBehaviour
         });
     }
     
-    public void RestartButtonPress()
+    public void HomeButtonPress()
     {
+        GameManager.instance.GoToHome();
+       
+    }
+
+    public void RestartGamePress()
+    {   
         GameManager.instance.RestartGame();
     }
 
     public void GameMenuSetUp()
-    { //Refactor and tween later on
+    { 
         gameMenuBG.gameObject.SetActive(true);
-        dragBG.gameObject.SetActive(false);
+        gameHudBG.gameObject.SetActive(false);
         levelCompleteBG.gameObject.SetActive(false);
         CameraController.instance.SendCameraToMenuPos();
     }
     
     public void GameSetUp()
-    { //Refactor and tween later on
+    { 
         gameMenuBG.gameObject.SetActive(false);
-        dragBG.gameObject.SetActive(true);
+        gameHudBG.gameObject.SetActive(true);
         levelCompleteBG.gameObject.SetActive(false);
         CameraController.instance.SendCameraToGamePos();
     }
     
     public void LevelCompleteSetUp()
-    { //Refactor and tween later on
+    { 
         gameMenuBG.gameObject.SetActive(false);
-        dragBG.gameObject.SetActive(false);
+        gameHudBG.gameObject.SetActive(false);
         levelCompleteBG.gameObject.SetActive(true);
         CameraController.instance.SendCameraToMenuPos();
     }

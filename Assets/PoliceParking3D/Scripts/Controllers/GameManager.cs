@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
     public GameState gameState;
     [SerializeField] private Transform vehicleParent;
     [SerializeField] private ParticleSystem levelCompleteParticles;
-    
+    public static bool isRestarting;
     
     [SerializeField] public List<VehicleMovementController> vehicles = new List<VehicleMovementController>();
     
@@ -40,7 +40,11 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameState = GameState.menu;
+        if (isRestarting)
+            gameState = GameState.game;
+        else
+            gameState = GameState.menu;
+        
         foreach (Transform vehicle in vehicleParent)
         {
             vehicles.Add(vehicle.GetComponent<VehicleMovementController>());
@@ -65,9 +69,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GoToHome()
+    {
+        SceneManager.LoadScene(0);
+        isRestarting = false;
+    }
+
     public void RestartGame()
     {
         SceneManager.LoadScene(0);
+        isRestarting = true;
     }
 
     public void LevelComplete()
