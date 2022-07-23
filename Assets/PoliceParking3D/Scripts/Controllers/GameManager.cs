@@ -13,8 +13,10 @@ public class GameManager : MonoBehaviour
 {
     public GameState gameState;
     [SerializeField] private Transform vehicleParent;
+    [SerializeField] private ParticleSystem levelCompleteParticles;
     
-    [SerializeField] private List<VehicleMovementController> vehicles = new List<VehicleMovementController>();
+    
+    [SerializeField] public List<VehicleMovementController> vehicles = new List<VehicleMovementController>();
     
     
     
@@ -52,16 +54,11 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(0);
         }
-        if (vehicles.Count == 0)
-        {
-            gameState = GameState.complete;
-            CameraController.instance.SendCameraToMenuPos();
-            AudioController.instance.PlayLevelComplete();
-        }
     }
 
     public void DeleteVehicle(VehicleMovementController vehicle)
     {
+        Debug.Log(vehicles.Count);
         if (vehicles.Count > 0)
         {
             vehicles.RemoveAt(vehicles.IndexOf(vehicle));
@@ -71,5 +68,13 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void LevelComplete()
+    {
+        gameState = GameState.complete;
+        CameraController.instance.SendCameraToMenuPos();
+        AudioController.instance.PlayLevelComplete();
+        levelCompleteParticles.Play();
     }
 }

@@ -113,6 +113,7 @@ public class VehicleMovementController : MonoBehaviour
             isInCollider = true;
             //obstacle effect later
             movementDirection *= -1;
+            other.gameObject.GetComponent<Obstacles>().Animate(movementDirection);
             AudioController.instance.PlayObstacleHitSound();
             if (vehicleState == VehicleState.Moving_In_Parking)
             {
@@ -184,8 +185,12 @@ public class VehicleMovementController : MonoBehaviour
         {
             if (other.tag == "endPoint")
             {
-                Destroy(gameObject);
                 GameManager.instance.DeleteVehicle(this);
+                Destroy(gameObject);
+                if (GameManager.instance.vehicles.Count ==0)
+                {
+                    GameManager.instance.LevelComplete();
+                }
             }
         }
     }
