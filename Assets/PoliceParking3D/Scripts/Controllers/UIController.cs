@@ -50,6 +50,9 @@ public class UIController : MonoBehaviour
         policeCarIMG.transform.DOLocalMoveX(100f, 0.5f).SetEase(Ease.InOutBounce);
     }
 
+
+    #region ButtonAction
+    
     public void PlayButtonPress()
     {
         AudioController.instance.PlayButtonClick();
@@ -72,7 +75,10 @@ public class UIController : MonoBehaviour
     {   
         GameManager.instance.RestartGame();
     }
+    
+    #endregion
 
+    #region UISetUP
     public void GameMenuSetUp()
     { 
         gameMenuBG.gameObject.SetActive(true);
@@ -96,4 +102,6 @@ public class UIController : MonoBehaviour
         levelCompleteBG.gameObject.SetActive(true);
         CameraController.instance.SendCameraToMenuPos();
     }
+    
+    #endregion
 }

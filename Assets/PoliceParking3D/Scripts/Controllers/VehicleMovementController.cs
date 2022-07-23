@@ -165,6 +165,8 @@ public class VehicleMovementController : MonoBehaviour
     #endregion
 
 
+    #region VehicleEffects
+    
     public void CollisionWithOtherVehicle()
     {
         if (vehicleState == VehicleState.In_Parking)
@@ -183,6 +185,8 @@ public class VehicleMovementController : MonoBehaviour
         sirenLight.DOColor(Color.red, 0.2f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
     }
 
+    #endregion
+    
     #region ColllisionTrigger
     
     private void OnTriggerEnter(Collider other)

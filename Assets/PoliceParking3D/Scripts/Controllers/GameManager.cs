@@ -69,6 +69,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #region StateAction
+    
     public void GoToHome()
     {
         SceneManager.LoadScene(0);
@@ -88,4 +90,6 @@ public class GameManager : MonoBehaviour
         AudioController.instance.PlayLevelComplete();
         levelCompleteParticles.Play();
     }
+    
+    #endregion
 }

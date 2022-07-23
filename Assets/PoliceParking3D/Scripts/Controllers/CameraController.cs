@@ -41,6 +41,8 @@ public class CameraController : MonoBehaviour
         
     }
 
+    #region CameraPositionChanges
+    
     public void SendCameraToMenuPos()
     {
         mainCamera.transform.DOMove(camMenuPos.position, 0.5f);
@@ -53,4 +55,6 @@ public class CameraController : MonoBehaviour
         mainCamera.transform.DOMove(camGamePos.position, 0.5f);
         mainCamera.transform.DORotate(camGamePos.eulerAngles, 0.5f);
     }
+    
+    #endregion
 }
