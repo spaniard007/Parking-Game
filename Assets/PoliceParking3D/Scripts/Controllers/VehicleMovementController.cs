@@ -23,6 +23,8 @@ public class VehicleMovementController : MonoBehaviour
     [SerializeField] private ParticleSystem driveAwaySmokeParticle;
     [SerializeField] private ParticleSystem backDustParticle;
     [SerializeField] private ParticleSystem frontDustParticle;
+    [SerializeField] private Light sirenLight;
+    
     
     public bool isMovingBack;
     
@@ -31,6 +33,7 @@ public class VehicleMovementController : MonoBehaviour
     {
         movementDirection = Vector3.zero;
         vehicleState = VehicleState.In_Parking;
+        sirenLight.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -138,6 +141,7 @@ public class VehicleMovementController : MonoBehaviour
             movementDirection *= -1;
             AudioController.instance.PlayObstacleHitSound();
             AudioController.instance.PlayHornSound();
+            other.gameObject.GetComponent<VehicleMovementController>().CollisionWithOtherVehicle();
             if (vehicleState == VehicleState.Moving_In_Parking)
             {
                 if (isMovingBack)
@@ -159,7 +163,25 @@ public class VehicleMovementController : MonoBehaviour
     
     
     #endregion
-    
+
+
+    public void CollisionWithOtherVehicle()
+    {
+        if (vehicleState == VehicleState.In_Parking)
+        {
+            float duration = 0.1f;
+            float strength = 0.1f;
+
+            transform.DOShakePosition(duration, strength);
+            transform.DOShakeRotation(duration, strength);
+        }
+    }
+
+    private void TurnOnSirenLight()
+    {
+        sirenLight.gameObject.SetActive(true);
+        sirenLight.DOColor(Color.red, 0.2f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+    }
 
     #region ColllisionTrigger
     
@@ -176,6 +198,7 @@ public class VehicleMovementController : MonoBehaviour
                         vehicleState = VehicleState.DrivingAway;
                         AudioController.instance.VehicleMovementSound(this,vehicleState,true);
                         movementDirection = transform.forward;
+                        TurnOnSirenLight();
                         driveAwaySmokeParticle.Play();
                     }
                 );
