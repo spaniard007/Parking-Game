@@ -8,7 +8,7 @@ Game Assets:
 3.2.0
 
 ## Unity Engine Version
-2020.3.26f1
+2021.2.9f1
 
 ## Build Support
 ### Android
