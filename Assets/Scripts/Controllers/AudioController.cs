@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.PlayerLoop;
 using UnityEngine.SceneManagement;
 
-public class AudiController : MonoBehaviour
+public class AudioController : MonoBehaviour
 {
     public AudioSource source;
 
@@ -14,14 +14,15 @@ public class AudiController : MonoBehaviour
     [SerializeField]private AudioClip levelCompleteSound;
     [SerializeField]private AudioClip obstacleHitSound;
     [SerializeField]private AudioClip getOutOfParkingSound;
-    [SerializeField]private AudioClip drivingAwaySound;
-    [SerializeField]private AudioClip sirenSound;
+    [SerializeField]private AudioClip drivingSound;
+    [SerializeField]private AudioClip sirenDriveAwaySound;
     [SerializeField]private AudioClip hornSound;
+    [SerializeField]private AudioClip engineStartSound;
     
     #endregion
     
     
-    public static AudiController instance;
+    public static AudioController instance;
     
     void Awake()
     {
@@ -43,10 +44,7 @@ public class AudiController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene(0);
-        }
+        
     }
 
     public void PlayButtonClick()
@@ -55,6 +53,11 @@ public class AudiController : MonoBehaviour
         source.volume = 1f;
     }
 
+    public void PlayEngineStartSound()
+    {
+        source.PlayOneShot(engineStartSound);
+        source.volume = 1f;
+    }
     public void PlayLevelComplete()
     {
         source.PlayOneShot(levelCompleteSound);
@@ -76,8 +79,47 @@ public class AudiController : MonoBehaviour
     
     public void PlayDrivingAwaySound()
     {
-        source.PlayOneShot(drivingAwaySound,.9f);
+        source.PlayOneShot(drivingSound);
+        source.volume = 1f;
+    }
+
+    public void PlayHornSound()
+    {
+        source.PlayOneShot(hornSound);
         source.volume = 1f;
     }
     
+    public void StopSound()
+    {
+        source.Stop();
+    }
+
+    public void VehicleMovementSound(VehicleMovementController vehicle, VehicleState vehicleState,bool playSound)
+    {
+        AudioSource vehicleAudioSource = vehicle.GetComponent<AudioSource>();
+        if (vehicleAudioSource != null)
+        {
+            if (playSound)
+            {
+
+                if (vehicleState == VehicleState.Moving_In_Parking)
+                {
+                    vehicleAudioSource.clip = drivingSound;
+                }
+                else
+                {
+                    vehicleAudioSource.clip = sirenDriveAwaySound;
+                }
+
+                vehicleAudioSource.Play();
+            }
+            else
+            {
+                vehicleAudioSource.Stop();
+            }
+        }
+    }
+
+
+
 }

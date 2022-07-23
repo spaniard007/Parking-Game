@@ -20,6 +20,10 @@ public class VehicleMovementController : MonoBehaviour
     public VehicleState vehicleState;
     private bool isInCollider;
 
+    [SerializeField] private ParticleSystem driveAwaySmokeParticle;
+    [SerializeField] private ParticleSystem backDustParticle;
+    [SerializeField] private ParticleSystem frontDustParticle;
+    
     public bool isMovingBack;
     
     // Start is called before the first frame update
@@ -77,6 +81,7 @@ public class VehicleMovementController : MonoBehaviour
 
         vehicleState = VehicleState.Moving_In_Parking;
         isMovingBack = movementDirection != transform.forward;
+        AudioController.instance.VehicleMovementSound(this,vehicleState,true);
     }
 
     #endregion
@@ -95,6 +100,7 @@ public class VehicleMovementController : MonoBehaviour
         vehicleState = VehicleState.In_Parking;
         movementDirection = Vector3.zero;
         isInCollider = false;
+        AudioController.instance.VehicleMovementSound(this,vehicleState,false);
     }
     #endregion
 
@@ -107,7 +113,20 @@ public class VehicleMovementController : MonoBehaviour
             isInCollider = true;
             //obstacle effect later
             movementDirection *= -1;
-            transform.DOLocalMove(transform.position+movementDirection/2f, 0.05f).OnComplete(() =>
+            AudioController.instance.PlayObstacleHitSound();
+            if (vehicleState == VehicleState.Moving_In_Parking)
+            {
+                if (isMovingBack)
+                {
+                    backDustParticle.Play();
+                }
+                else
+                {
+                    frontDustParticle.Play();
+                }
+            }
+
+            transform.DOMove(transform.position+movementDirection/2f, 0.05f).OnComplete(() =>
             {
                 StopVehicle();
             });
@@ -116,7 +135,21 @@ public class VehicleMovementController : MonoBehaviour
         {
             isInCollider = true;
             movementDirection *= -1;
-            transform.DOLocalMove(transform.position+movementDirection/2f, 0.05f).OnComplete(() =>
+            AudioController.instance.PlayObstacleHitSound();
+            AudioController.instance.PlayHornSound();
+            if (vehicleState == VehicleState.Moving_In_Parking)
+            {
+                if (isMovingBack)
+                {
+                    backDustParticle.Play();
+                }
+                else
+                {
+                    frontDustParticle.Play();
+                }
+            }
+
+            transform.DOMove(transform.position+movementDirection/2f, 0.05f).OnComplete(() =>
             {
                 StopVehicle();
             });
@@ -140,7 +173,9 @@ public class VehicleMovementController : MonoBehaviour
                 transform.DORotate(new Vector3(0, transform.eulerAngles.y + 90, 0), 0.1f).OnComplete(() =>
                     {
                         vehicleState = VehicleState.DrivingAway;
+                        AudioController.instance.VehicleMovementSound(this,vehicleState,true);
                         movementDirection = transform.forward;
+                        driveAwaySmokeParticle.Play();
                     }
                 );
             }

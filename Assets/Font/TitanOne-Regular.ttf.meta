@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a51f92ab52a12e147af97d1c88017008
+guid: 78cb9b3fef4b99e48abb59e0e63bb9b6
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Game Of Squids
+  - Titan One
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

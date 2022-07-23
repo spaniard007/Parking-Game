@@ -12,7 +12,8 @@ public enum GameState
 public class GameManager : MonoBehaviour
 {
     public GameState gameState;
-
+    [SerializeField] private Transform vehicleParent;
+    
     [SerializeField] private List<VehicleMovementController> vehicles = new List<VehicleMovementController>();
     
     
@@ -38,15 +39,24 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gameState = GameState.menu;
+        foreach (Transform vehicle in vehicleParent)
+        {
+            vehicles.Add(vehicle.GetComponent<VehicleMovementController>());
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene(0);
+        }
         if (vehicles.Count == 0)
         {
             gameState = GameState.complete;
             CameraController.instance.SendCameraToMenuPos();
+            AudioController.instance.PlayLevelComplete();
         }
     }
 

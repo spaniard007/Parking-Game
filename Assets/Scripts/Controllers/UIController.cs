@@ -11,13 +11,17 @@ public class UIController : MonoBehaviour
     [SerializeField] private Image dragBG;
     [SerializeField] private Image levelCompleteBG;
 
+    [SerializeField] private Image policeManIMG;
+    [SerializeField] private Image policeCarIMG;
+    
+
     [SerializeField] private TMP_Text playText;
 
     
     // Start is called before the first frame update
     void Start()
     {
-        playText.DOColor(Color.clear, 0.5f).SetEase(Ease.InOutExpo).SetLoops(-1, LoopType.Yoyo);
+        MenuSceneInit();
     }
 
     // Update is called once per frame
@@ -39,9 +43,23 @@ public class UIController : MonoBehaviour
         
     }
 
+    public void MenuSceneInit()
+    {
+        playText.DOColor(Color.clear, 0.5f).SetEase(Ease.InOutExpo).SetLoops(-1, LoopType.Yoyo);
+        policeManIMG.transform.DOMoveX(0f, 0.5f).SetEase(Ease.InOutBounce);
+        policeCarIMG.transform.DOLocalMoveX(100f, 0.5f).SetEase(Ease.InOutBounce);
+    }
+
     public void PlayButtonPress()
     {
-        GameManager.instance.gameState = GameState.game;
+        AudioController.instance.PlayButtonClick();
+        AudioController.instance.PlayEngineStartSound();
+        policeManIMG.transform.DOMoveX(-800f, 0.5f).SetEase(Ease.InSine);
+        policeCarIMG.transform.DOLocalMoveX(800f, 0.5f).SetEase(Ease.InSine).OnComplete(() =>
+        {
+            GameManager.instance.gameState = GameState.game;
+            AudioController.instance.StopSound();
+        });
     }
     
     public void RestartButtonPress()
