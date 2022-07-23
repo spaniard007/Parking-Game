@@ -699,7 +699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 508188148369006438, guid: 5d157f9f04e51554fa1d7df02ca12373, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.5299997
+      value: 6.84
       objectReference: {fileID: 0}
     - target: {fileID: 508188148369006438, guid: 5d157f9f04e51554fa1d7df02ca12373, type: 3}
       propertyPath: m_LocalPosition.z
@@ -736,6 +736,18 @@ PrefabInstance:
     - target: {fileID: 7768234829418417095, guid: 5d157f9f04e51554fa1d7df02ca12373, type: 3}
       propertyPath: m_Name
       value: SirenLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 8666464376263783048, guid: 5d157f9f04e51554fa1d7df02ca12373, type: 3}
+      propertyPath: m_Range
+      value: 1.44
+      objectReference: {fileID: 0}
+    - target: {fileID: 8666464376263783048, guid: 5d157f9f04e51554fa1d7df02ca12373, type: 3}
+      propertyPath: m_Intensity
+      value: 3.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 8666464376263783048, guid: 5d157f9f04e51554fa1d7df02ca12373, type: 3}
+      propertyPath: m_BounceIntensity
+      value: 1.28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d157f9f04e51554fa1d7df02ca12373, type: 3}

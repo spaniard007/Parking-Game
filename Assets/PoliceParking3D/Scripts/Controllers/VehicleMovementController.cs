@@ -17,6 +17,7 @@ public class VehicleMovementController : MonoBehaviour
 {
     public int speed;
     private Vector3 movementDirection;
+    private Vector3 tempmovementDirection;
     public VehicleState vehicleState;
     private bool isInCollider;
 
@@ -184,8 +185,10 @@ public class VehicleMovementController : MonoBehaviour
         sirenLight.gameObject.SetActive(true);
         sirenLight.DOColor(Color.red, 0.2f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
     }
+    
 
     #endregion
+    
     
     #region ColllisionTrigger
     

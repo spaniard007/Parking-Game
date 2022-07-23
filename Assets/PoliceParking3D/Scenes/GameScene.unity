@@ -313,7 +313,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3322266469074011721, guid: 33ebbf53759c84c4795793bc6f9d4218, type: 3}
+      propertyPath: rayCastRange
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3322266469074011721, guid: 33ebbf53759c84c4795793bc6f9d4218, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 33ebbf53759c84c4795793bc6f9d4218, type: 3}
 --- !u!4 &44351252 stripped
 Transform:
@@ -1122,7 +1127,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 173007375627075678, guid: 2bce4e452d1732441a288976cac6660c, type: 3}
+      propertyPath: rayCastRange
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 173007375627075678, guid: 2bce4e452d1732441a288976cac6660c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2bce4e452d1732441a288976cac6660c, type: 3}
 --- !u!4 &182064832 stripped
 Transform:
@@ -2750,10 +2760,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8764420514412511414, guid: 8ecb83e29c7a909498b3f578724b5524, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 5.43
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ecb83e29c7a909498b3f578724b5524, type: 3}
 --- !u!1001 &766063119
@@ -2997,26 +3003,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2939173959722036341, guid: 3c6b87f2bce2f51409a9827cf9986b70, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 6.84
-      objectReference: {fileID: 0}
-    - target: {fileID: 6305617991506706843, guid: 3c6b87f2bce2f51409a9827cf9986b70, type: 3}
-      propertyPath: m_Range
-      value: 1.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 6305617991506706843, guid: 3c6b87f2bce2f51409a9827cf9986b70, type: 3}
-      propertyPath: m_DrawHalo
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6305617991506706843, guid: 3c6b87f2bce2f51409a9827cf9986b70, type: 3}
-      propertyPath: m_Intensity
-      value: 3.81
-      objectReference: {fileID: 0}
-    - target: {fileID: 6305617991506706843, guid: 3c6b87f2bce2f51409a9827cf9986b70, type: 3}
-      propertyPath: m_BounceIntensity
-      value: 1.28
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c6b87f2bce2f51409a9827cf9986b70, type: 3}
 --- !u!4 &854905466 stripped
@@ -3085,7 +3071,6 @@ GameObject:
   - component: {fileID: 884727115}
   - component: {fileID: 884727118}
   - component: {fileID: 884727117}
-  - component: {fileID: 884727116}
   m_Layer: 5
   m_Name: GameMenuBG
   m_TagString: Untagged
@@ -3116,21 +3101,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &884727116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 884727114}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 560a6a4c4853f3b498a5e6a9ce0f50a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  raycastDistance: 200
-  dragMinThreshold: 30
-  dragMaxThreshold: 70
 --- !u!114 &884727117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5260,7 +5230,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3805545502972639913, guid: c242e8f877bfdcd41baf7688f8257e61, type: 3}
+      propertyPath: rayCastRange
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3805545502972639913, guid: c242e8f877bfdcd41baf7688f8257e61, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c242e8f877bfdcd41baf7688f8257e61, type: 3}
 --- !u!1 &1413840566
 GameObject:
@@ -6247,7 +6222,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3805545502972639913, guid: c242e8f877bfdcd41baf7688f8257e61, type: 3}
+      propertyPath: rayCastRange
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3805545502972639913, guid: c242e8f877bfdcd41baf7688f8257e61, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c242e8f877bfdcd41baf7688f8257e61, type: 3}
 --- !u!1001 &1764954586
 PrefabInstance:
@@ -6808,7 +6788,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   raycastDistance: 200
   dragMinThreshold: 30
-  dragMaxThreshold: 70
+  dragMaxThreshold: 500
 --- !u!1 &2044990611
 GameObject:
   m_ObjectHideFlags: 0

@@ -53,7 +53,7 @@ public class TouchInput : MonoBehaviour,IPointerDownHandler,IPointerUpHandler,ID
 
         Vector2 dragVal = dragData.touchPos - eventData.position;
 
-        if (dragVal.magnitude > dragMinThreshold && dragVal.magnitude<dragMaxThreshold)
+        if (dragVal.magnitude > dragMinThreshold)
         {
             //attempt vehichle Movement
             //if(dra)
